@@ -15,6 +15,9 @@ import com.example.DinoTrex.other.Constants.Companion.roadThickness
 import com.example.DinoTrex.other.Constants.Companion.xVelocity
 import com.example.DinoTrex.util.Converter.convertDpToPixels
 
+//This state change the position of road  to show some slower parallax
+// movement compared to the dino and it will appear like dino is moving.
+
 data class RoadState(var xpos : Dp = 0.dp) {
 
    fun move() {

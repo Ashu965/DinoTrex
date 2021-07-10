@@ -12,7 +12,8 @@ import com.example.DinoTrex.other.Constants.Companion.xVelocity
 import com.example.DinoTrex.other.AssetPath
 import com.example.DinoTrex.util.Converter
 
-
+//More than one cloud appears at a time.
+// Hence, this state controls the multiple cloud states within.
 class CloudState(val cloudList : ArrayList<Cloud> = ArrayList()) {
     fun init(){
         var startx = roadLength
@@ -23,6 +24,8 @@ class CloudState(val cloudList : ArrayList<Cloud> = ArrayList()) {
         }
     }
 
+    ///this function decrease position of each cloud on every time frame
+    // so that they appear to be moving.
     fun move(){
         for(cloud in cloudList){
             cloud.xpos -= xVelocity

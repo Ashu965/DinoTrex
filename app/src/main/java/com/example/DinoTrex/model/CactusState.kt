@@ -19,6 +19,8 @@ import com.example.DinoTrex.util.Converter.convertDpToPixels
 
 val doubt_factor = convertDpToPixels(DOUBT_FACTOR.value)
 
+//More than one cactus appears at a time.
+// Hence, this state controls the multiple cactus states within.
 class CactusState(val  cactusList : ArrayList<Cactus> = ArrayList()) {
 
     fun init() {
@@ -31,6 +33,10 @@ class CactusState(val  cactusList : ArrayList<Cactus> = ArrayList()) {
         }
     }
 
+
+    //this function decrease position of each cactus so that they appear to be moving.
+    //If position of cactus become less than leftmost position , it reassign it to position
+    // on right so that it will move from right to left continously.
     fun move(score: MutableState<Int>,birdState: BirdState) {
         for (cactus in cactusList) {
             if(!birdState.isMoving || cactus.xpos< roadLength)
@@ -46,6 +52,8 @@ class CactusState(val  cactusList : ArrayList<Cactus> = ArrayList()) {
         }
     }
 
+    //Reallocating the position to cactus that crosses leftmost position , while keeping in
+    // mind to maintain minimum distance between cactus's.
     private fun reallocate(cactus: Cactus) {
         if (cactusList.last().xpos < roadLength)
             cactus.xpos =
@@ -55,10 +63,12 @@ class CactusState(val  cactusList : ArrayList<Cactus> = ArrayList()) {
                 cactusList.last().xpos + (minDistanceBetween + (0..minDistanceBetween.value.toInt()).random().dp)
     }
 
+
     fun destroy() {
         while (cactusList.isNotEmpty())
             cactusList.removeAt(0)
     }
+
 
     fun draw(drawScope: DrawScope,birdState: BirdState) {
             for (cactus in cactusList) {
@@ -86,6 +96,9 @@ class CactusState(val  cactusList : ArrayList<Cactus> = ArrayList()) {
             }
     }
 
+
+    //this class define the state of cactus like its position and its characterstic like it crosses
+    //the dino or not.
     class Cactus(var xpos: Dp, var croosDino: Boolean = false) {
         fun getRect(): Rect {
             val xposInFloat =convertDpToPixels(xpos.value)

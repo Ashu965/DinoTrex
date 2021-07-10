@@ -16,6 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
+//When game ends, this composable display "Game over" text along with icon.
 @Composable
 fun GameOver(modifier: Modifier = Modifier, isGameOver: Boolean = true) {
     Column(modifier = modifier) {

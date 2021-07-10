@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+//This composable get recomposed after every time frame to display the score
 @Composable
 fun Score(score: Int,highestScore : Int) {
     Row(Modifier.offset(150.dp, 20.dp)) {

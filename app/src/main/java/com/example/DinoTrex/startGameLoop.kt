@@ -23,7 +23,8 @@ import com.example.DinoTrex.other.Constants.Companion.roadLength
 import com.example.DinoTrex.model.*
 import com.example.DinoTrex.storage.prefs
 
-
+/*Main GameLoop. It runs continuously during gameplay. Each turn of the loop,
+it processes user input without blocking, updates the game state, and renders the game*/
 @Composable
 fun startGameLoop(context: Context){
 
@@ -43,8 +44,11 @@ fun startGameLoop(context: Context){
             tween(durationMillis = 500)
         )
     )
+
+    //Display bird after a particular score value.
     if(birdState.targetScore == scoreState.value)
         birdState.isMoving = true
+
     if(cactusState.cactusList.isEmpty())
         cactusState.init()
     if(cloudState.cloudList.isEmpty())
@@ -117,8 +121,9 @@ fun startGameLoop(context: Context){
 
 }
 
-fun checkCollision(dinoRect: Rect, cactusRect: Rect): Boolean {
-    if(dinoRect.overlaps(cactusRect))
+//Function to check if collision occurs between dino and obstacle.
+fun checkCollision(dinoRect: Rect, obstacleRect: Rect): Boolean {
+    if(dinoRect.overlaps(obstacleRect))
         return true
     else
         return false

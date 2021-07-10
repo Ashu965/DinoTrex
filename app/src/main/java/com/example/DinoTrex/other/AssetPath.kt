@@ -7,6 +7,8 @@ import androidx.compose.ui.graphics.asComposePath
 import androidx.compose.ui.graphics.vector.PathParser
 import com.example.DinoTrex.deviceDensity
 
+//This contains the path data of all the objects in the game which help us to generate path and
+//using which we will draw objects on the canvas.
 class AssetPath {
     // T-Rex Dino
 

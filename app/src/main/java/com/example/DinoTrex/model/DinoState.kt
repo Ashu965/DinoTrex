@@ -15,7 +15,7 @@ import com.example.DinoTrex.other.Constants.Companion.dinoUpVelocity
 import com.example.DinoTrex.other.Constants.Companion.roadPosition
 import com.example.DinoTrex.util.Converter.convertDpToPixels
 
-
+//This controls the state of the dino in its vertical movement (ypos).
 data class DinoState(var ypos: Dp = roadPosition, var velocity : Dp = 0.dp) {
     var gravity = 0.dp
 
@@ -28,6 +28,10 @@ data class DinoState(var ypos: Dp = roadPosition, var velocity : Dp = 0.dp) {
             gravity=0.dp
         }
     }
+
+    //To make the dino jump ,it has given some upvelocity which changes its ypos , along with that
+    //some gravity also given to decrease the upvelocity with time so that it can come back to
+    //its original position.
     fun jump(){
         Log.i("ashu","road = $roadPosition")
         Log.i("ashu", "ypos - $ypos")
@@ -74,6 +78,8 @@ data class DinoState(var ypos: Dp = roadPosition, var velocity : Dp = 0.dp) {
         }
     }
 
+
+    //Function to get rectangle around the dino.
     fun getRect() : Rect{
         val resource = AssetPath().DinoPath()
         return  Rect(
